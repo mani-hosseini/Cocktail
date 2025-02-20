@@ -4,7 +4,7 @@ import Newsletter from './pages/Newsletter';
 import About from './pages/About';
 import Home from './pages/Home';
 import Details from "./components/details.jsx";
-
+import NotFound from "./pages/warning.jsx";
 
 function App() {
     return (
@@ -15,6 +15,7 @@ function App() {
                 <Route path="/about" element={<About/>}/>
                 <Route path="/newsletter" element={<Newsletter/>}/>
                 <Route path="/cocktail/:id" element={<Details/>}/>
+                <Route path="*" element={<NotFound />}/>
             </Routes>
         </Router>
     );
