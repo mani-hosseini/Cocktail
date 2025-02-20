@@ -4,7 +4,7 @@ function Header() {
     return (
         <section className="max-w-7xl mx-auto px-4 flex items-center justify-between">
             <h1 className="text-[#10B981] text-[44px] font-bold">MixMaster</h1>
-            <nav>
+            <nav className={'flex items-center gap-x-9'}>
                 <Link to="/" className="text-[16px] hover:text-[#10B981] mr-4">Home</Link>
                 <Link to="/about" className="text-[16px] hover:text-[#10B981] mr-4">About</Link>
                 <Link to="/newsletter" className="text-[16px] hover:text-[#10B981]">Newsletter</Link>
