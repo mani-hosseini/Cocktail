@@ -3,9 +3,9 @@ import Items from "../components/items.jsx";
 
 function Home() {
     return (
-        <section className="max-w-7xl mx-auto px-4 mt-10">
+        <section className="max-w-7xl mx-auto px-4 ">
             <Form />
-            <section className="mt-10 grid grid-cols-3 gap-6  ">
+            <section className="mt-10 grid grid-cols-3 gap-6 ">
                 <Items />
             </section>
         </section>
