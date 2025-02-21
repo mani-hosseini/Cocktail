@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import LoadingSpinner from "./loading.jsx";
 
 function Items() {
     const [cocktailData, setCocktailData] = useState([]);
@@ -15,7 +16,7 @@ function Items() {
     }, []);
 
     if (cocktailData.length === 0) {
-        return <div>Loading...</div>;
+        return <LoadingSpinner/>;
     }
 
     return (

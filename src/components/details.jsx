@@ -1,6 +1,7 @@
 import {useParams, Link} from 'react-router-dom';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
+import LoadingSpinner from "./loading.jsx";
 
 function Details() {
     const {id} = useParams();
@@ -15,7 +16,7 @@ function Details() {
     }, [id]);
 
     if (!cocktail) {
-        return <div>Loading...</div>;
+        return <LoadingSpinner/>;
     }
 
     return (
