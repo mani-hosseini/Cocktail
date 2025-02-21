@@ -1,22 +1,25 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom'; // اضافه کردن useNavigate
 import axios from 'axios';
 import LoadingSpinner from "./loading.jsx";
 
 function Items() {
     const [cocktailData, setCocktailData] = useState([]);
-    const navigate = useNavigate();
+    const location = useLocation();
+    const navigate = useNavigate(); // تعریف navigate
+    const searchParams = new URLSearchParams(location.search);
+    const searchTerm = searchParams.get('search') || 'margarita';
 
     useEffect(() => {
-        axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
+        axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchTerm}`)
             .then(res => {
-                setCocktailData(res.data.drinks);
+                setCocktailData(res.data.drinks || []);
             })
             .catch(error => console.log(error));
-    }, []);
+    }, [searchTerm]);
 
     if (cocktailData.length === 0) {
-        return <LoadingSpinner/>;
+        return <LoadingSpinner />;
     }
 
     return (
@@ -34,7 +37,7 @@ function Items() {
                         <span className="text-[12px] text-gray-500">{cocktail.strAlcoholic}</span>
                         <button
                             className="text-white cursor-pointer w-auto bg-[#10B981] px-3 py-[6px] rounded-xl"
-                            onClick={() => navigate(`/cocktail/${cocktail.idDrink}`)}
+                            onClick={() => navigate(`/cocktail/${cocktail.idDrink}`)} // استفاده از navigate
                         >
                             Details
                         </button>
